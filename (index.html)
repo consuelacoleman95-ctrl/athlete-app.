@@ -1,0 +1,1194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>NextGen Athlete AI</title>
+<meta name="theme-color" content="#EA580C">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="NextGen">
+<link rel="manifest" href="manifest.json">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0b1220;
+    --navy-2:#101a2e;
+    --charcoal:#1a1d23;
+    --panel:#161b26;
+    --panel-2:#1d2333;
+    --orange:#ff5a1f;
+    --orange-2:#ff8a4c;
+    --text:#eef1f6;
+    --text-dim:#8d96a8;
+    --line:#2a3142;
+    --ok:#3ddc84;
+    box-sizing:border-box;
+    padding-top:env(safe-area-inset-top,0px);
+    padding-bottom:env(safe-area-inset-bottom,0px);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-padding-top:env(safe-area-inset-top,0px);}
+  html,body{height:100%;}
+  body{
+    margin:0;
+    min-height:100%;
+    background:
+      radial-gradient(1200px 600px at 15% -10%, #14213a 0%, transparent 60%),
+      radial-gradient(900px 500px at 110% 10%, #201417 0%, transparent 55%),
+      linear-gradient(180deg,var(--navy) 0%, var(--charcoal) 55%, #101216 100%);
+    color:var(--text);
+    font-family:'Inter',system-ui,-apple-system,sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{
+    max-width:920px;
+    margin:0 auto;
+    padding:28px 20px 60px;
+  }
+  header.top{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-bottom:34px;
+  }
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .brand .bolt{
+    color:var(--orange);
+    font-family:'Anton',sans-serif;
+    font-size:26px;
+  }
+  .brand-name{
+    font-family:'Anton',sans-serif;
+    letter-spacing:0.5px;
+    font-size:20px;
+    line-height:1;
+  }
+  .brand-name span{color:var(--orange);}
+  .tagline{
+    font-size:12px;
+    color:var(--text-dim);
+    margin-top:3px;
+  }
+  .hero{
+    margin-bottom:30px;
+  }
+  h1.headline{
+    font-family:'Anton',sans-serif;
+    font-weight:400;
+    font-size:clamp(34px,6vw,58px);
+    line-height:0.98;
+    letter-spacing:0.5px;
+    margin:0 0 12px;
+    text-transform:uppercase;
+  }
+  h1.headline .accent{
+    color:var(--orange);
+    -webkit-text-stroke:0px;
+  }
+  .sub{
+    color:var(--text-dim);
+    font-size:16px;
+    max-width:520px;
+    line-height:1.5;
+  }
+  .card{
+    background:linear-gradient(180deg,var(--panel-2), var(--panel));
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:26px;
+    box-shadow:0 20px 50px -20px rgba(0,0,0,0.6);
+  }
+  .field{
+    margin-bottom:20px;
+  }
+  .field:last-of-type{margin-bottom:26px;}
+  label{
+    display:block;
+    font-size:12px;
+    font-weight:700;
+    letter-spacing:0.06em;
+    color:var(--orange-2);
+    margin-bottom:8px;
+    text-transform:uppercase;
+  }
+  select{
+    width:100%;
+    appearance:none;
+    -webkit-appearance:none;
+    background:var(--navy-2)
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9'%3E%3Cpath d='M1 1L7 7L13 1' stroke='%23ff8a4c' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")
+      no-repeat right 16px center;
+    border:1.5px solid var(--line);
+    border-radius:10px;
+    color:var(--text);
+    font-family:'Inter',sans-serif;
+    font-size:16px;
+    font-weight:600;
+    padding:14px 42px 14px 16px;
+    transition:border-color .15s ease, box-shadow .15s ease;
+  }
+  select:hover{border-color:#3a4358;}
+  select:focus{
+    outline:none;
+    border-color:var(--orange);
+    box-shadow:0 0 0 3px rgba(255,90,31,0.25);
+  }
+  .go-btn{
+    width:100%;
+    border:none;
+    border-radius:12px;
+    padding:19px 20px;
+    font-family:'Anton',sans-serif;
+    font-size:20px;
+    letter-spacing:0.5px;
+    text-transform:uppercase;
+    color:#1a0a02;
+    background:linear-gradient(135deg,var(--orange-2),var(--orange) 60%,#e64500);
+    cursor:pointer;
+    box-shadow:0 12px 30px -10px rgba(255,90,31,0.55);
+    transition:transform .12s ease, box-shadow .12s ease;
+  }
+  .go-btn:hover{transform:translateY(-1px); box-shadow:0 16px 34px -8px rgba(255,90,31,0.7);}
+  .go-btn:active{transform:translateY(0px) scale(0.99);}
+
+  /* Results screen */
+  .plan-header{
+    display:flex;
+    align-items:flex-start;
+    justify-content:space-between;
+    gap:16px;
+    margin-bottom:22px;
+    flex-wrap:wrap;
+  }
+  .plan-title{
+    font-family:'Anton',sans-serif;
+    font-size:clamp(26px,4.5vw,36px);
+    text-transform:uppercase;
+    line-height:1.02;
+    margin:0 0 6px;
+  }
+  .plan-meta{
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+  }
+  .chip{
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:0.05em;
+    text-transform:uppercase;
+    padding:6px 10px;
+    border-radius:999px;
+    border:1px solid var(--line);
+    color:var(--text-dim);
+    background:var(--panel);
+  }
+  .back-btn{
+    background:transparent;
+    border:1.5px solid var(--line);
+    color:var(--text);
+    font-family:'Inter',sans-serif;
+    font-weight:700;
+    font-size:13px;
+    padding:10px 16px;
+    border-radius:10px;
+    cursor:pointer;
+    white-space:nowrap;
+    transition:border-color .15s ease, color .15s ease;
+  }
+  .back-btn:hover{border-color:var(--orange); color:var(--orange-2);}
+
+  .warn-box{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    background:linear-gradient(90deg, rgba(255,90,31,0.16), rgba(255,90,31,0.06));
+    border:1.5px solid rgba(255,138,76,0.55);
+    border-radius:12px;
+    padding:14px 16px;
+    margin-bottom:26px;
+    font-size:14px;
+    font-weight:600;
+    color:#ffd7bd;
+  }
+  .warn-box .ico{font-size:20px; flex-shrink:0;}
+
+  .week-block{
+    margin-bottom:22px;
+    border:1px solid var(--line);
+    border-radius:14px;
+    overflow:hidden;
+    background:var(--panel);
+  }
+  .week-block.deload{
+    border-color:rgba(61,220,132,0.4);
+  }
+  .week-head{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:16px 18px;
+    background:var(--navy-2);
+    cursor:pointer;
+    user-select:none;
+  }
+  .week-block.deload .week-head{
+    background:linear-gradient(90deg, rgba(61,220,132,0.14), rgba(61,220,132,0.04));
+  }
+  .week-name{
+    font-family:'Anton',sans-serif;
+    font-size:18px;
+    letter-spacing:0.3px;
+    text-transform:uppercase;
+  }
+  .week-tag{
+    font-size:11px;
+    font-weight:700;
+    color:var(--text-dim);
+    text-transform:uppercase;
+    letter-spacing:0.05em;
+  }
+  .week-block.deload .week-tag{color:var(--ok);}
+  .chev{
+    color:var(--text-dim);
+    transition:transform .2s ease;
+    font-size:14px;
+  }
+  .week-block.open .chev{transform:rotate(180deg);}
+  .week-body{
+    display:none;
+    padding:6px 18px 18px;
+  }
+  .week-block.open .week-body{display:block;}
+  .day-block{
+    padding:14px 0;
+    border-top:1px solid var(--line);
+  }
+  .day-block:first-child{border-top:none;}
+  .day-title{
+    font-weight:800;
+    font-size:14px;
+    margin-bottom:10px;
+    color:var(--orange-2);
+  }
+  .ex-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    gap:12px;
+    padding:8px 0;
+    border-top:1px dashed rgba(255,255,255,0.06);
+    font-size:14px;
+  }
+  .ex-row:first-of-type{border-top:none;}
+  .ex-name{font-weight:600;}
+  .ex-scheme{
+    color:var(--text-dim);
+    font-variant-numeric:tabular-nums;
+    white-space:nowrap;
+    font-weight:600;
+    font-size:13px;
+  }
+  .rest-day{
+    color:var(--text-dim);
+    font-size:14px;
+    padding:14px 0;
+    border-top:1px solid var(--line);
+  }
+  footer.note{
+    margin-top:20px;
+    font-size:12px;
+    color:var(--text-dim);
+    line-height:1.6;
+  }
+  @media (max-width:520px){
+    .card{padding:20px;}
+  }
+  :focus-visible{outline:2px solid var(--orange-2); outline-offset:2px;}
+
+  /* Add to Home Screen banner */
+  #a2hsBanner{
+    position:fixed;
+    left:14px;
+    right:14px;
+    bottom:calc(14px + env(safe-area-inset-bottom,0px));
+    z-index:60;
+    display:none;
+    align-items:center;
+    gap:12px;
+    background:linear-gradient(135deg,#1d2333,#161b26);
+    border:1px solid rgba(255,138,76,0.45);
+    border-radius:14px;
+    padding:14px 14px;
+    box-shadow:0 16px 40px -14px rgba(0,0,0,0.7);
+    max-width:480px;
+    margin:0 auto;
+  }
+  #a2hsBanner .a2hs-text{flex:1; font-size:13px; line-height:1.45;}
+  #a2hsBanner .a2hs-text b{color:var(--orange-2);}
+  #a2hsBanner .a2hs-steps{color:var(--text-dim); font-size:12px; margin-top:4px;}
+  #a2hsBanner .a2hs-close{
+    background:transparent;
+    border:none;
+    color:var(--text-dim);
+    font-size:18px;
+    line-height:1;
+    cursor:pointer;
+    padding:4px 6px;
+    flex-shrink:0;
+  }
+  #a2hsBanner .a2hs-close:hover{color:var(--orange-2);}
+
+  .premium-modal{
+    width:100%;
+    max-width:440px;
+    max-height:90vh;
+    overflow-y:auto;
+    background:linear-gradient(180deg,#1d2333,#12151f);
+    border:1px solid rgba(255,138,76,0.4);
+    border-radius:18px;
+    padding:28px 24px;
+    position:relative;
+    box-shadow:0 30px 70px -20px rgba(0,0,0,0.8);
+  }
+  .premium-close{
+    position:absolute;
+    top:16px;
+    right:16px;
+    background:transparent;
+    border:1px solid var(--line);
+    color:var(--text-dim);
+    width:32px;
+    height:32px;
+    border-radius:50%;
+    cursor:pointer;
+    font-size:16px;
+    line-height:1;
+  }
+  .premium-close:hover{border-color:var(--orange); color:var(--orange-2);}
+  .premium-eyebrow{
+    color:var(--orange-2);
+    font-weight:700;
+    font-size:12px;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    margin-bottom:6px;
+  }
+  .premium-heading{
+    font-family:'Anton',sans-serif;
+    font-size:28px;
+    text-transform:uppercase;
+    line-height:1.05;
+    margin:0 0 14px;
+  }
+  .premium-offer{
+    background:var(--navy-2);
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:16px;
+    margin-bottom:18px;
+    font-size:14px;
+    line-height:1.6;
+  }
+  .premium-offer .price-old{color:var(--text-dim); text-decoration:line-through; margin-right:8px;}
+  .premium-offer .price-new{color:var(--ok); font-weight:800; font-size:18px;}
+  .premium-back-link{
+    display:block;
+    text-align:center;
+    margin-top:16px;
+    color:var(--text-dim);
+    font-size:13px;
+    text-decoration:underline;
+    cursor:pointer;
+    background:none;
+    border:none;
+    width:100%;
+  }
+  .premium-back-link:hover{color:var(--orange-2);}
+
+  /* Progress Tracker */
+  .premium-note{
+    background:rgba(61,220,132,0.1);
+    border:1px solid rgba(61,220,132,0.4);
+    border-radius:10px;
+    padding:12px 14px;
+    font-size:13px;
+    color:#bdf5d4;
+    margin-bottom:16px;
+    line-height:1.5;
+  }
+  .premium-note .premium-back-link{
+    display:inline;
+    width:auto;
+    margin-top:0;
+    font-size:12px;
+    color:#bdf5d4;
+    text-decoration:underline;
+  }
+  .metric-item{
+    border:1.5px solid var(--line);
+    border-radius:12px;
+    padding:15px 16px;
+    background:var(--navy-2);
+    margin-bottom:10px;
+  }
+  .metric-item:last-child{margin-bottom:0;}
+  .metric-row-top{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+    margin-bottom:10px;
+  }
+  .metric-name{font-weight:700; font-size:14px;}
+  .metric-unit{color:var(--text-dim); font-weight:500; font-size:12px;}
+  .metric-delta{font-size:12px; font-weight:800; white-space:nowrap;}
+  .metric-delta.up{color:var(--ok);}
+  .metric-delta.down{color:#ff6b6b;}
+  .metric-delta.neutral{color:var(--text-dim);}
+  .metric-log-row{display:flex; gap:8px; margin-bottom:8px;}
+  .metric-input{
+    flex:1;
+    padding:10px 12px;
+    border-radius:8px;
+    border:1.5px solid var(--line);
+    background:var(--charcoal);
+    color:var(--text);
+    font-size:14px;
+    font-family:'Inter',sans-serif;
+  }
+  .metric-input:focus{outline:none; border-color:var(--orange); box-shadow:0 0 0 3px rgba(255,90,31,0.25);}
+  .metric-log-btn{
+    border:none;
+    border-radius:8px;
+    padding:10px 16px;
+    font-weight:800;
+    font-size:12px;
+    text-transform:uppercase;
+    letter-spacing:0.03em;
+    color:#1a0a02;
+    background:linear-gradient(135deg,var(--orange-2),var(--orange));
+    cursor:pointer;
+    white-space:nowrap;
+  }
+  .metric-log-btn:hover{filter:brightness(1.05);}
+  .metric-history{font-size:12px; color:var(--text-dim); line-height:1.6;}
+
+  /* Specialized Training Tracks */
+  .tracks-heading{
+    font-family:'Anton',sans-serif;
+    font-size:16px;
+    letter-spacing:0.3px;
+    text-transform:uppercase;
+    color:var(--text);
+    margin-bottom:14px;
+  }
+  .tracks-list{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+  }
+  .sport-group{margin-bottom:22px;}
+  .sport-group:last-child{margin-bottom:0;}
+  .sport-group-heading{
+    font-size:12px;
+    font-weight:800;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--orange-2);
+    margin-bottom:10px;
+  }
+  .sport-tabs{
+    display:flex;
+    gap:8px;
+    margin-bottom:18px;
+    flex-wrap:wrap;
+  }
+  .sport-tab{
+    flex:1;
+    min-width:100px;
+    background:var(--navy-2);
+    border:1.5px solid var(--line);
+    color:var(--text-dim);
+    font-weight:700;
+    font-size:13px;
+    padding:11px 12px;
+    border-radius:10px;
+    cursor:pointer;
+    transition:border-color .15s ease, color .15s ease, background .15s ease;
+  }
+  .sport-tab:hover{border-color:#3a4358; color:var(--text);}
+  .sport-tab.active{
+    background:linear-gradient(135deg,var(--orange-2),var(--orange));
+    border-color:var(--orange);
+    color:#1a0a02;
+  }
+  .track-item{
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    padding:15px 16px;
+    border-radius:12px;
+    border:1.5px solid var(--line);
+    background:var(--navy-2);
+    cursor:pointer;
+    transition:border-color .15s ease, transform .12s ease;
+  }
+  .track-item:hover{transform:translateY(-1px);}
+  .track-item.free:hover{border-color:var(--ok);}
+  .track-name{font-weight:700; font-size:14px;}
+  .track-badge{
+    font-size:10px;
+    font-weight:800;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    padding:4px 8px;
+    border-radius:999px;
+    flex-shrink:0;
+  }
+  .track-item.free .track-badge{background:rgba(61,220,132,0.15); color:var(--ok); border:1px solid rgba(61,220,132,0.4);}
+  .track-item.locked{
+    border-color:rgba(255,90,31,0.4);
+    background:linear-gradient(135deg, rgba(255,90,31,0.08), var(--navy-2));
+  }
+  .track-item.locked:hover{border-color:var(--orange);}
+  .track-item.locked .track-name{color:var(--text-dim);}
+  .lock-overlay{
+    display:flex;
+    align-items:center;
+    gap:6px;
+    flex-shrink:0;
+  }
+  .lock-icon{
+    width:26px;
+    height:26px;
+    border-radius:50%;
+    background:linear-gradient(135deg,var(--orange-2),var(--orange));
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:12px;
+    flex-shrink:0;
+  }
+  .lock-price{
+    font-size:11px;
+    font-weight:800;
+    color:var(--orange-2);
+    white-space:nowrap;
+  }
+
+  /* Track-unlock modal (separate from waitlist modal) */
+  #trackPremiumOverlay{
+    position:fixed;
+    inset:0;
+    background:rgba(6,8,14,0.82);
+    backdrop-filter:blur(4px);
+    z-index:110;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    padding-top:calc(20px + env(safe-area-inset-top,0px));
+    padding-bottom:calc(20px + env(safe-area-inset-bottom,0px));
+  }
+  #trackPremiumOverlay.open{display:flex;}
+  .track-modal-icon{
+    width:52px;
+    height:52px;
+    border-radius:50%;
+    background:linear-gradient(135deg,var(--orange-2),var(--orange));
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:22px;
+    margin-bottom:16px;
+  }
+  .track-modal-track-name{
+    background:var(--navy-2);
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:12px 14px;
+    font-weight:700;
+    font-size:14px;
+    margin-bottom:18px;
+  }
+  .track-unlock-cta{
+    width:100%;
+    border:none;
+    border-radius:10px;
+    padding:16px;
+    font-family:'Anton',sans-serif;
+    font-size:16px;
+    letter-spacing:0.4px;
+    text-transform:uppercase;
+    color:#1a0a02;
+    background:linear-gradient(135deg,var(--orange-2),var(--orange) 60%,#e64500);
+    cursor:pointer;
+    text-align:center;
+    text-decoration:none;
+    display:block;
+  }
+  .track-unlock-cta:hover{filter:brightness(1.05);}
+
+  /* Track content view */
+  .track-view-body{
+    font-size:14px;
+    color:var(--text-dim);
+    line-height:1.7;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="brand">
+      <span class="bolt">⚡</span>
+      <div>
+        <div class="brand-name">NEXTGEN <span>ATHLETE AI</span></div>
+        <div class="tagline">Built for the next rep, not the last one</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- FORM SCREEN -->
+  <section id="formScreen">
+    <div class="hero">
+      <h1 class="headline">Train like<br>your <span class="accent">next level</span> depends on it</h1>
+      <p class="sub">Browse free training tracks for every sport, or build a custom 4-week plan below.</p>
+    </div>
+
+    <div class="card">
+      <div class="tracks-heading">Workout Dashboard</div>
+      <div class="sport-tabs" id="sportTabs">
+        <button class="sport-tab active" data-sport="basketball">🏀 Basketball</button>
+        <button class="sport-tab" data-sport="soccer">⚽ Soccer</button>
+        <button class="sport-tab" data-sport="football">🏈 Football</button>
+      </div>
+      <div id="tracksDashboard"></div>
+    </div>
+
+    <div class="card" style="margin-top:20px;">
+      <div class="tracks-heading">Progress Tracker</div>
+      <div class="premium-note" id="progressPremiumNote" style="display:none;">
+        Premium unlocked on this device — log your stats below and watch your numbers move.
+        <button class="premium-back-link" id="restorePremiumLink" style="margin-top:6px;">Not premium? Reset (demo)</button>
+      </div>
+      <div id="progressDashboard"></div>
+    </div>
+
+    <div class="card" style="margin-top:20px;">
+      <div class="tracks-heading">Build a Custom 4-Week Plan</div>
+      <div class="field">
+        <label for="sport">Select Your Sport</label>
+        <select id="sport">
+          <option value="basketball">Basketball</option>
+          <option value="soccer">Soccer</option>
+          <option value="football">Football</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="goal">Select Your Goal</label>
+        <select id="goal"></select>
+      </div>
+      <div class="field">
+        <label for="equipment">Available Equipment</label>
+        <select id="equipment">
+          <option value="bodyweight">Bodyweight / No Equipment</option>
+          <option value="gym">Full Gym Access</option>
+        </select>
+      </div>
+      <button class="go-btn" id="generateBtn">Generate My 4-Week Plan ⚡</button>
+    </div>
+  </section>
+
+  <!-- RESULT SCREEN -->
+  <section id="resultScreen" style="display:none;"></section>
+
+  <!-- TRACK CONTENT VIEW -->
+  <section id="trackScreen" style="display:none;">
+    <div class="plan-header">
+      <div>
+        <h1 class="plan-title" id="trackViewTitle">Track</h1>
+        <div class="plan-meta"><span class="chip" id="trackViewSport"></span></div>
+      </div>
+      <button class="back-btn" id="trackBackBtn">← Back</button>
+    </div>
+    <div class="warn-box"><span class="ico">⚠️</span><span>EVERY WORKOUT: Start with a 5-minute dynamic warm-up and end with a 5-minute cool-down stretch.</span></div>
+    <div class="card track-view-body" id="trackViewBody"></div>
+  </section>
+</div>
+
+<!-- PREMIUM UNLOCK MODAL (tracks + progress metrics) -->
+<div id="trackPremiumOverlay">
+  <div class="premium-modal">
+    <button class="premium-close" id="trackPremiumClose" aria-label="Close">✕</button>
+    <div class="track-modal-icon">🔒</div>
+    <div class="premium-eyebrow" id="trackModalEyebrow">Premium Track</div>
+    <h2 class="premium-heading" id="trackModalHeading">Unlock this training track</h2>
+    <div class="track-modal-track-name" id="trackModalName"></div>
+    <div class="premium-offer">
+      One-time payment. Yours forever — no subscription.
+      <br><span class="price-new">$5</span>
+    </div>
+    <a class="track-unlock-cta" id="trackUnlockBtn" href="YOUR_STRIPE_LINK_HERE" target="_blank" rel="noopener">Unlock Forever for $5</a>
+    <button class="premium-back-link" id="trackPremiumBack">← Back</button>
+  </div>
+</div>
+
+<!-- Add to Home Screen banner -->
+<div id="a2hsBanner">
+  <div class="a2hs-text">
+    📲 <b>Add to Home Screen</b> to use this as a full-screen mobile app!
+    <div class="a2hs-steps" id="a2hsSteps"></div>
+  </div>
+  <button class="a2hs-close" id="a2hsClose" aria-label="Dismiss">✕</button>
+</div>
+
+<script>
+(function(){
+  const sportLabels = { basketball:'Basketball', soccer:'Soccer', football:'Football' };
+  const equipLabels = { bodyweight:'Bodyweight / No Equipment', gym:'Full Gym Access' };
+
+  // Sport-specific goal categories: each maps to a label (for the dropdown) and a pool (for exercises)
+  const goalsBySport = {
+    basketball: [
+      { value:'legpower', label:'Vertical Jump / Leg Power', pool:'vertical' },
+      { value:'ballskills', label:'Shooting & Ball-Handling', pool:'skill' },
+      { value:'quickness', label:'Speed & Quickness', pool:'sprint' }
+    ],
+    football: [
+      { value:'accel', label:'Speed & Acceleration', pool:'sprint' },
+      { value:'cutting', label:'Agility & Change of Direction', pool:'agility' },
+      { value:'power', label:'Strength & Power', pool:'vertical' }
+    ],
+    soccer: [
+      { value:'speedagility', label:'Speed & Agility', pool:'sprint' },
+      { value:'conditioning', label:'Endurance & Conditioning', pool:'endurance' },
+      { value:'touch', label:'Ball Control & Touch', pool:'skill' }
+    ]
+  };
+  function goalDef(sport, value){
+    return (goalsBySport[sport] || []).find(g => g.value === value);
+  }
+  function populateGoalSelect(sport){
+    const sel = document.getElementById('goal');
+    sel.innerHTML = (goalsBySport[sport] || []).map(g => '<option value="' + g.value + '">' + g.label + '</option>').join('');
+  }
+
+  // Exercise pools: [category][equipment] -> array of exercise names
+  const pools = {
+    vertical: {
+      bodyweight: ['Squats (no weight)','Jump squats','Long jumps','Step-ups on a chair','One-leg hip raises','Plank hold','Calf raises','Jump off a box and land soft','Tuck jumps','Wall sit'],
+      gym: ['Barbell back squats','Trap bar deadlifts','Box jumps','Kettlebell swings','Bulgarian split squats','Weighted step-ups','Seated box jumps','Hip thrusts','Calf raises (loaded)','Depth jumps']
+    },
+    sprint: {
+      bodyweight: ['Quick high-knee skips','High knees','Big running strides','Short sprints (10-20m)','Lunges','Squats (no weight)','Plank hold','Long jumps','One-leg balance reach','Mountain climbers'],
+      gym: ['Sled pushes','Barbell hip thrusts','Trap bar deadlifts','Resisted sprints (band/sled)','Bulgarian split squats','Kettlebell swings','Weighted lunges','Box jumps','Single-leg RDL (dumbbell)','Sled drags']
+    },
+    endurance: {
+      bodyweight: ['Jumping jacks circuit','Burpees','Mountain climbers','Squats (no weight)','Push-ups','Plank hold','Lunges','High knees','Shuttle runs (short sprints back and forth)','Jump rope'],
+      gym: ['Sled pushes','Kettlebell swings','Rowing machine intervals','Battle ropes','Goblet squats','Farmer carries','Push-ups','Box step-ups','Circuit: squat-press-row','Assault bike intervals']
+    },
+    skill: {
+      bodyweight: ['Speed ladder footwork','Dribble/touch through cones','Throw ball at wall and catch it','One-leg balance reach','Twisting core exercise','Mirror shuffle drill (with a partner)','Quick catch reaction drill','Walk a straight line (balance)','Plank with shoulder taps','Repeat your sport skill slowly for form'],
+      gym: ['Medicine ball rotational throws','Reactive catch-and-pass drills','Footwork ladder drills','Cable rotational chops','Single-leg box balance holds','Med ball wall passes','Resistance band reaction pulls','Core rotation throws (med ball)','Weighted vest footwork drills','Plyo box catch-and-stick']
+    },
+    agility: {
+      bodyweight: ['Side-to-side shuffles','Quick direction-change drill','Weave sprint through cones','Run backward then sprint forward','Ladder in-out steps','Side-to-side box touches','Sprint then change direction fast','T-shaped sprint drill','Crossover side steps','Mirror drill with a partner'],
+      gym: ['Resisted lateral shuffles (band)','Sled lateral drags','5-10-5 pro agility drill','Weighted vest cone weaves','Box shuffle touches','Reactive change-of-direction sprints','T-drill','Resisted backpedal sprints','Carioca steps with band','Med ball rotational lateral throws']
+    }
+  };
+
+  // Rep/set schemes by exercise "type" heuristics, scaled by week
+  function schemeFor(exName, week){
+    const heavyLower = /squat|deadlift|thrust|press|carry|drag/i.test(exName);
+    const jumpLower = /jump|bound|skip|plyo|box jump/i.test(exName);
+    const sprintLower = /sprint|accel|shuttle/i.test(exName);
+    const holdLower = /plank|wall sit|hold/i.test(exName);
+    const intervalLower = /interval|circuit|rope|bike|row/i.test(exName);
+
+    // base scaling: week1 base, week2 +volume, week3 peak, week4 deload (lighter)
+    const stage = week; // 1..4
+    if (holdLower){
+      const secs = [30,40,50,25][stage-1];
+      return '3 x ' + secs + 's';
+    }
+    if (jumpLower || sprintLower){
+      const reps = [6,8,10,5][stage-1];
+      const sets = stage===4 ? 2 : 3;
+      return sets + ' x ' + reps;
+    }
+    if (intervalLower){
+      const rounds = [4,5,6,3][stage-1];
+      return rounds + ' rounds x 30s';
+    }
+    if (heavyLower){
+      const setsReps = [ [3,8], [4,8], [4,6], [2,10] ][stage-1];
+      return setsReps[0] + ' x ' + setsReps[1];
+    }
+    const setsReps = [ [3,12], [3,15], [4,12], [2,12] ][stage-1];
+    return setsReps[0] + ' x ' + setsReps[1];
+  }
+
+  function buildDay(exercises, week, dayIndex, count){
+    // pick a rotating subset of the pool per day so days differ
+    const list = [];
+    for (let i=0;i<count;i++){
+      list.push(exercises[(dayIndex*count + i) % exercises.length]);
+    }
+    return list.map(name => ({ name, scheme: schemeFor(name, week) }));
+  }
+
+  function weekLabel(w){
+    if (w===1) return 'Foundation';
+    if (w===2) return 'Build';
+    if (w===3) return 'Peak Intensity';
+    return 'Deload Recovery Week';
+  }
+
+  function generatePlan(sport, goal, equipment){
+    const gDef = goalDef(sport, goal) || { pool: 'endurance' };
+    const pool = pools[gDef.pool][equipment];
+    const weeks = [];
+    for (let w=1; w<=4; w++){
+      const days = [];
+      const trainingDays = w===4 ? 3 : 4; // deload week: fewer sessions
+      for (let d=0; d<trainingDays; d++){
+        days.push({
+          title: 'Day ' + (d+1),
+          exercises: buildDay(pool, w, d, 5)
+        });
+      }
+      const restCount = 7 - trainingDays;
+      weeks.push({ number:w, label: weekLabel(w), days, restCount, deload: w===4 });
+    }
+    return weeks;
+  }
+
+  function renderResult(sport, goal, equipment){
+    const weeks = generatePlan(sport, goal, equipment);
+    const goalLabel = (goalDef(sport, goal) || {}).label || 'Custom';
+    const container = document.getElementById('resultScreen');
+    let html = '';
+    html += '<div class="plan-header">';
+    html += '  <div>';
+    html += '    <h1 class="plan-title">Your ' + goalLabel + ' Plan</h1>';
+    html += '    <div class="plan-meta">';
+    html += '      <span class="chip">' + sportLabels[sport] + '</span>';
+    html += '      <span class="chip">' + goalLabel + '</span>';
+    html += '      <span class="chip">' + equipLabels[equipment] + '</span>';
+    html += '    </div>';
+    html += '  </div>';
+    html += '  <button class="back-btn" id="backBtn">← Back</button>';
+    html += '</div>';
+
+    html += '<div class="warn-box"><span class="ico">⚠️</span><span>EVERY WORKOUT: Start with a 5-minute dynamic warm-up and end with a 5-minute cool-down stretch.</span></div>';
+
+    weeks.forEach(week => {
+      html += '<div class="week-block' + (week.deload ? ' deload' : '') + (week.number===1 ? ' open' : '') + '" data-week="' + week.number + '">';
+      html += '  <div class="week-head">';
+      html += '    <div><div class="week-name">Week ' + week.number + '</div><div class="week-tag">' + week.label + '</div></div>';
+      html += '    <span class="chev">▾</span>';
+      html += '  </div>';
+      html += '  <div class="week-body">';
+      week.days.forEach(day => {
+        html += '<div class="day-block"><div class="day-title">' + day.title + '</div>';
+        day.exercises.forEach(ex => {
+          html += '<div class="ex-row"><span class="ex-name">' + ex.name + '</span><span class="ex-scheme">' + ex.scheme + '</span></div>';
+        });
+        html += '</div>';
+      });
+      if (week.restCount > 0){
+        html += '<div class="rest-day">+ ' + week.restCount + ' rest / active recovery day' + (week.restCount>1?'s':'') + '</div>';
+      }
+      html += '  </div>';
+      html += '</div>';
+    });
+
+    html += '<footer class="note">Plan auto-generated based on your selections. Adjust load to your own ability — form first, speed second.</footer>';
+
+    container.innerHTML = html;
+
+    document.getElementById('backBtn').addEventListener('click', () => {
+      document.getElementById('resultScreen').style.display = 'none';
+      document.getElementById('formScreen').style.display = '';
+      window.scrollTo({top:0, behavior:'smooth'});
+    });
+
+    container.querySelectorAll('.week-head').forEach(head => {
+      head.addEventListener('click', () => {
+        head.parentElement.classList.toggle('open');
+      });
+    });
+  }
+
+  document.getElementById('generateBtn').addEventListener('click', () => {
+    const sport = document.getElementById('sport').value;
+    const goal = document.getElementById('goal').value;
+    const equipment = document.getElementById('equipment').value;
+    renderResult(sport, goal, equipment);
+    document.getElementById('formScreen').style.display = 'none';
+    document.getElementById('resultScreen').style.display = '';
+    window.scrollTo({top:0, behavior:'smooth'});
+  });
+
+  document.getElementById('sport').addEventListener('change', (e) => populateGoalSelect(e.target.value));
+  populateGoalSelect(document.getElementById('sport').value);
+
+  /* ---------- PWA: service worker registration ---------- */
+  if ('serviceWorker' in navigator){
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('service-worker.js').catch(() => {});
+    });
+  }
+
+  /* ---------- Add to Home Screen banner ---------- */
+  (function(){
+    const ua = navigator.userAgent || '';
+    const isIOS = /iphone|ipad|ipod/i.test(ua) && !window.MSStream;
+    const isAndroid = /android/i.test(ua);
+    const isStandalone = (window.matchMedia && window.matchMedia('(display-mode: standalone)').matches) || window.navigator.standalone === true;
+
+    let dismissed = false;
+    try{ dismissed = localStorage.getItem('nextgen_a2hs_dismissed') === '1'; }catch(e){}
+
+    if ((isIOS || isAndroid) && !isStandalone && !dismissed){
+      const banner = document.getElementById('a2hsBanner');
+      const steps = document.getElementById('a2hsSteps');
+      steps.textContent = isIOS
+        ? "Tap the Share button and select 'Add to Home Screen'"
+        : "Tap the menu and select 'Install app'";
+      banner.style.display = 'flex';
+      document.getElementById('a2hsClose').addEventListener('click', () => {
+        banner.style.display = 'none';
+        try{ localStorage.setItem('nextgen_a2hs_dismissed','1'); }catch(e){}
+      });
+    }
+  })();
+
+  /* ---------- Specialized Training Tracks (paywall) ---------- */
+  const trackData = {
+    basketball: [
+      { name: 'Add 4 Inches to Your Vertical Jump', locked: true },
+      { name: 'Elite Handles & Dribbling', locked: true },
+      { name: 'Basketball Fundamentals', locked: false }
+    ],
+    soccer: [
+      { name: 'Agility & Explosive Speed', locked: true },
+      { name: 'Striker Ball Control Masterclass', locked: true },
+      { name: 'Soccer Conditioning Basics', locked: false }
+    ],
+    football: [
+      { name: 'Combine Prep (40-yard dash & route-running cuts)', locked: true },
+      { name: 'Football Speed Basics', locked: false }
+    ]
+  };
+
+  let activeTrackSport = 'basketball';
+
+  function renderTracksDashboard(){
+    const dash = document.getElementById('tracksDashboard');
+    const tracks = trackData[activeTrackSport] || [];
+    let html = '<div class="tracks-list">';
+    tracks.forEach(t => {
+      if (t.locked){
+        html += '<div class="track-item locked" data-track="' + t.name + '" data-sport="' + activeTrackSport + '">' +
+          '<span class="track-name">' + t.name + '</span>' +
+          '<span class="lock-overlay"><span class="lock-price">$5</span><span class="lock-icon">🔒</span></span>' +
+          '</div>';
+      } else {
+        html += '<div class="track-item free" data-track="' + t.name + '" data-sport="' + activeTrackSport + '">' +
+          '<span class="track-name">' + t.name + '</span>' +
+          '<span class="track-badge">Free</span>' +
+          '</div>';
+      }
+    });
+    html += '</div>';
+    dash.innerHTML = html;
+
+    dash.querySelectorAll('.track-item').forEach(item => {
+      item.addEventListener('click', () => {
+        const name = item.getAttribute('data-track');
+        const sp = item.getAttribute('data-sport');
+        if (item.classList.contains('locked')){
+          openTrackPremiumModal(name, 'Premium Track', 'Unlock this training track');
+        } else {
+          openTrackView(name, sp);
+        }
+      });
+    });
+  }
+
+  document.querySelectorAll('.sport-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      activeTrackSport = tab.getAttribute('data-sport');
+      document.querySelectorAll('.sport-tab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      renderTracksDashboard();
+    });
+  });
+
+  function openTrackPremiumModal(itemName, eyebrow, heading){
+    document.getElementById('trackModalEyebrow').textContent = eyebrow || 'Premium Track';
+    document.getElementById('trackModalHeading').textContent = heading || 'Unlock this training track';
+    document.getElementById('trackModalName').textContent = itemName;
+    document.getElementById('trackPremiumOverlay').classList.add('open');
+  }
+  function closeTrackPremiumModal(){
+    document.getElementById('trackPremiumOverlay').classList.remove('open');
+  }
+  document.getElementById('trackPremiumClose').addEventListener('click', closeTrackPremiumModal);
+  document.getElementById('trackPremiumBack').addEventListener('click', closeTrackPremiumModal);
+  document.getElementById('trackPremiumOverlay').addEventListener('click', (e) => {
+    if (e.target.id === 'trackPremiumOverlay') closeTrackPremiumModal();
+  });
+
+  function openTrackView(trackName, sport){
+    document.getElementById('trackViewTitle').textContent = trackName;
+    document.getElementById('trackViewSport').textContent = sportLabels[sport];
+    document.getElementById('trackViewBody').innerHTML =
+      '<p>This free track walks you through a focused session built around <b>' + trackName + '</b>. ' +
+      'Follow the warm-up above, work through the drills at a controlled pace, and finish with your cool-down.</p>' +
+      '<p>More structured weeks for this track are on the way — for now, use it as a standalone session whenever you want extra reps in this area.</p>';
+    document.getElementById('formScreen').style.display = 'none';
+    document.getElementById('resultScreen').style.display = 'none';
+    document.getElementById('trackScreen').style.display = '';
+    window.scrollTo({top:0, behavior:'smooth'});
+  }
+  document.getElementById('trackBackBtn').addEventListener('click', () => {
+    document.getElementById('trackScreen').style.display = 'none';
+    document.getElementById('formScreen').style.display = '';
+    window.scrollTo({top:0, behavior:'smooth'});
+  });
+
+  renderTracksDashboard();
+
+  /* ---------- Progress Tracker (premium-gated) ---------- */
+  const PREMIUM_KEY = 'nextgen_premium';
+  function isPremium(){
+    try{ return localStorage.getItem(PREMIUM_KEY) === '1'; }catch(e){ return false; }
+  }
+  function setPremium(val){
+    try{ localStorage.setItem(PREMIUM_KEY, val ? '1' : '0'); }catch(e){}
+  }
+
+  const metricsData = {
+    basketball: [
+      { name: 'Vertical Jump Height', unit: 'in', lowerBetter: false },
+      { name: 'Free Throw %', unit: '%', lowerBetter: false },
+      { name: '3-Point %', unit: '%', lowerBetter: false }
+    ],
+    soccer: [
+      { name: 'Beep Test Score', unit: 'level', lowerBetter: false },
+      { name: 'Shuttle Run Agility', unit: 'sec', lowerBetter: true },
+      { name: 'Shot Accuracy Rate', unit: '%', lowerBetter: false }
+    ],
+    football: [
+      { name: '40-Yard Dash Time', unit: 'sec', lowerBetter: true },
+      { name: '3-Cone Drill', unit: 'sec', lowerBetter: true },
+      { name: 'Positional Catch Rate', unit: '%', lowerBetter: false }
+    ]
+  };
+
+  function metricKey(sport, name){ return 'nextgen_metric::' + sport + '::' + name; }
+  function getEntries(sport, name){
+    try{
+      const raw = localStorage.getItem(metricKey(sport, name));
+      return raw ? JSON.parse(raw) : [];
+    }catch(e){ return []; }
+  }
+  function addEntry(sport, name, value){
+    const entries = getEntries(sport, name);
+    entries.push({ date: new Date().toISOString().slice(0,10), value: value });
+    try{ localStorage.setItem(metricKey(sport, name), JSON.stringify(entries)); }catch(e){}
+  }
+
+  function renderProgressDashboard(){
+    document.getElementById('progressPremiumNote').style.display = isPremium() ? 'block' : 'none';
+    const dash = document.getElementById('progressDashboard');
+    let html = '';
+    Object.keys(metricsData).forEach(sport => {
+      html += '<div class="sport-group">';
+      html += '  <div class="sport-group-heading">' + sportLabels[sport] + '</div>';
+
+      metricsData[sport].forEach(m => {
+        if (!isPremium()){
+          html += '<div class="track-item locked" data-sport="' + sport + '" data-metric="' + m.name + '">' +
+            '<span class="track-name">' + m.name + '</span>' +
+            '<span class="lock-overlay"><span class="lock-price">$5</span><span class="lock-icon">🔒</span></span>' +
+            '</div>';
+        } else {
+          const entries = getEntries(sport, m.name);
+          let deltaHtml = '<span class="metric-delta neutral">No data yet</span>';
+          let historyHtml = 'Log your first entry below.';
+          if (entries.length){
+            const latest = entries[entries.length - 1];
+            historyHtml = entries.slice(-4).map(e => e.date + ': ' + e.value + ' ' + m.unit).join(' &nbsp;→&nbsp; ');
+            if (entries.length > 1){
+              const first = entries[0];
+              const diff = +(latest.value - first.value).toFixed(2);
+              const improved = m.lowerBetter ? diff < 0 : diff > 0;
+              const dirClass = diff === 0 ? 'neutral' : (improved ? 'up' : 'down');
+              const sign = diff > 0 ? '+' : '';
+              deltaHtml = '<span class="metric-delta ' + dirClass + '">' + sign + diff + ' ' + m.unit + '</span>';
+            } else {
+              deltaHtml = '<span class="metric-delta neutral">Latest: ' + latest.value + ' ' + m.unit + '</span>';
+            }
+          }
+          html += '<div class="metric-item">' +
+            '  <div class="metric-row-top"><span class="metric-name">' + m.name + ' <span class="metric-unit">(' + m.unit + ')</span></span>' + deltaHtml + '</div>' +
+            '  <div class="metric-log-row">' +
+            '    <input type="number" step="0.1" class="metric-input" placeholder="Today\'s value" data-sport="' + sport + '" data-metric="' + m.name + '">' +
+            '    <button class="metric-log-btn" data-sport="' + sport + '" data-metric="' + m.name + '">Log</button>' +
+            '  </div>' +
+            '  <div class="metric-history">' + historyHtml + '</div>' +
+            '</div>';
+        }
+      });
+      html += '</div>';
+    });
+    dash.innerHTML = html;
+
+    dash.querySelectorAll('.track-item.locked').forEach(item => {
+      item.addEventListener('click', () => {
+        openTrackPremiumModal(item.getAttribute('data-metric'), 'Progress Tracking', 'Unlock stat tracking for this metric');
+      });
+    });
+    dash.querySelectorAll('.metric-log-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const sport = btn.getAttribute('data-sport');
+        const name = btn.getAttribute('data-metric');
+        const input = dash.querySelector('.metric-input[data-sport="' + sport + '"][data-metric="' + name + '"]');
+        const value = parseFloat(input.value);
+        if (isNaN(value)) { input.focus(); return; }
+        addEntry(sport, name, value);
+        input.value = '';
+        renderProgressDashboard();
+      });
+    });
+  }
+
+  document.getElementById('trackUnlockBtn').addEventListener('click', () => {
+    setPremium(true);
+    renderProgressDashboard();
+  });
+  document.getElementById('restorePremiumLink').addEventListener('click', () => {
+    setPremium(false);
+    renderProgressDashboard();
+  });
+
+  renderProgressDashboard();
+})();
+</script>
+</body>
+</html>
